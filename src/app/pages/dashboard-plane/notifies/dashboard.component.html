@@ -1,0 +1,14 @@
+<p>Notificaciones recientes!</p>
+
+<div
+  #scrollChat
+  [scrollTop]="scrollChat.scrollHeight"
+  class="card-body"
+  style="overflow-y: scroll; height: 350px"
+>
+  <ul class="list-group">
+    <li class="list-group list-group-flush" *ngFor="let item of array">
+      <div class="alert alert-primary">{{ item.board }}</div>
+    </li>
+  </ul>
+</div>
