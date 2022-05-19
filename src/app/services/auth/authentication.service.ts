@@ -28,7 +28,7 @@ export class AuthenticationService {
     private retriveCredentialsService: RetriveCredentialsService
   ) {}
 
-  singIn(singInRequest: SingInRequest) {
+  singIn(singInRequest: SingInRequest): Observable<SingInResponse> {
     let endpoint = this.SERVICE_AUTH + '/singIn';
     return this.http
       .post<SingInResponse>(endpoint, singInRequest)
@@ -37,7 +37,7 @@ export class AuthenticationService {
       );
   }
 
-  verify() {
+  verify(): Observable<boolean> {
     let endpoint = this.SERVICE_AUTH + '/verify';
     const credentials = this.retriveCredentialsService.retriveCredentials();
     return this.http.post<VerifyResponse>(endpoint, null, credentials).pipe(

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Router } from '@angular/router';
 
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { SingInRequest } from 'src/app/model/request/SingInRequest';
 import { SingInResponse } from 'src/app/model/response/SingInResponse';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
+import { ErrorResponse } from 'src/app/model/response/ErrorResponse';
 
 @Component({
   selector: 'app-login',
@@ -22,16 +23,20 @@ export class LoginComponent {
     private authenticationService: AuthenticationService
   ) {}
 
-  login() {
-    this.request.username = 'KEVIN0998C1';
-    this.request.password = 'kevin12345@';
+  private showAlertError(error: ErrorResponse) {
+    Swal.fire({
+      title: error.error?.message,
+      text: error.error?.error,
+      icon: 'error',
+    });
+  }
 
+  login() {
+    //this.request.username = 'KEVIN0998C1';
+    //this.request.password = 'kevin12345@';
     this.authenticationService.singIn(this.request).subscribe(
-      (response: SingInResponse) => {
-        console.log(response);
-        this.router.navigateByUrl('/');
-      },
-      (error: any) => console.log(error)
+      (response: SingInResponse) => this.router.navigateByUrl('/'),
+      (error: ErrorResponse) => this.showAlertError(error)
     );
   }
 }

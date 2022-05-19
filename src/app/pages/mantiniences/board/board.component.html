@@ -1,1 +1,197 @@
-<p>board works!</p>
+<div class="row animated fadeIn fast" *ngIf="loading">
+  <div class="col-12">
+    <div class="alert alert-info text-center" role="alert">
+      <h4 class="alert-heading">Cargando</h4>
+      <i class="fa fa-spin fa-refresh fa-2x"></i>
+      <p class="mb-0">Espere</p>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="!loading">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-8">
+            <h4 class="card-title">Mesas</h4>
+            <h5 class="card-subtitle">
+              Total de mesas regitradas: {{ responseForRetrive.totalItems }}
+            </h5>
+          </div>
+          <div class="col-2">
+            <button
+              class="btn btn-light text-themecolor"
+              data-toggle="modal"
+              data-target="#modalBoard"
+            >
+              <i class="fa fa-plus"></i>&nbsp;
+              <label>Una nueva mesa</label>
+            </button>
+          </div>
+          <div class="col-2">
+            <button
+              class="btn btn-light text-themecolor"
+              data-toggle="modal"
+              data-target="#modalJoinBoard"
+            >
+              <i class="fa fa-plus"></i>&nbsp;
+              <label>Unir mesas</label>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Ambiente</th>
+                <th>Asientos</th>
+                <th>Estado</th>
+                <th class="text-nowrap">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of responseForRetrive.collections">
+                <td>{{ item.name }}</td>
+                <td>{{ item.environment }}</td>
+                <td>{{ item.seating }}</td>
+                <td>{{ item.details?.state }}</td>
+                <td class="text-nowrap text-center">
+                  <i
+                    class="fa fa-eye text-inverse m-r-10"
+                    (click)="viewDetails(item.details)"
+                  ></i>
+                  <i class="fa fa-close text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-secondary" (click)="changuePage(true)">
+          Anterior
+        </button>
+        &nbsp;
+        <button class="btn btn-secondary" (click)="changuePage(false)">
+          Siguiente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalBoard" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Registrar mesa</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Nombre de la mesa</label>
+            <input
+              [(ngModel)]="this.boardRequest.name"
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="seating">Números de asientos</label>
+            <input
+              [(ngModel)]="this.boardRequest.seating"
+              type="number"
+              class="form-control"
+              id="seating"
+              name="seating"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="enviroment">Ambiente de la mesa</label>
+            <select
+              [(ngModel)]="this.boardRequest.environment"
+              class="form-control form-control-sm"
+              id="enviroment"
+              name="environment"
+            >
+              <option
+                [value]="item.id"
+                *ngFor="let item of enviromentCollection"
+              >
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="save()">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalJoinBoard" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Unir mesas</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <input
+                [(ngModel)]="this.joinBoardRequest.board1"
+                class="form-control"
+                type="text"
+                placeholder="Mesa 1"
+              />
+            </div>
+            <div class="col-sm">
+              <input
+                [(ngModel)]="this.joinBoardRequest.board2"
+                class="form-control"
+                type="text"
+                placeholder="Mesa 2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="JoinBoard()">
+          Unir mesas
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

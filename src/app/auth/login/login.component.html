@@ -20,9 +20,10 @@
         <div class="form-group m-t-40">
           <div class="col-xs-12">
             <input
+              [(ngModel)]="this.request.username"
               class="form-control"
               type="text"
-              required=""
+              name="username"
               placeholder="Username"
             />
           </div>
@@ -30,9 +31,10 @@
         <div class="form-group">
           <div class="col-xs-12">
             <input
+              [(ngModel)]="this.request.password"
               class="form-control"
               type="password"
-              required=""
+              name="password"
               placeholder="Password"
             />
           </div>

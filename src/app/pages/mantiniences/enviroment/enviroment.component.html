@@ -15,9 +15,11 @@
         <div class="row">
           <div class="col-8">
             <h4 class="card-title">Ambientes</h4>
-            <h5 class="card-subtitle">Total de ambientes regitrados:</h5>
+            <h5 class="card-subtitle">
+              Total de ambientes regitrados: {{ responseForRetrive.totalItems }}
+            </h5>
           </div>
-          <div class="col-4">
+          <div class="col-4 ">
             <div class="text-right">
               <button class="btn btn-light text-themecolor" (click)="save()">
                 <i class="fa fa-plus mr-2"></i>
@@ -36,8 +38,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>d</td>
+              <tr *ngFor="let item of responseForRetrive.collections">
+                <td>{{ item.name }}</td>
                 <td class="text-nowrap text-center">
                   <a href="#" data-toggle="tooltip" data-original-title="Edit">
                     <i class="fa fa-pencil text-inverse m-r-10"></i>
@@ -50,9 +52,13 @@
             </tbody>
           </table>
         </div>
-        <button class="btn btn-secondary">Anterior</button>
+        <button class="btn btn-secondary" (click)="changuePage(true)">
+          Anterior
+        </button>
         &nbsp;
-        <button class="btn btn-secondary">Siguiente</button>
+        <button class="btn btn-secondary" (click)="changuePage(false)">
+          Siguiente
+        </button>
       </div>
     </div>
   </div>
