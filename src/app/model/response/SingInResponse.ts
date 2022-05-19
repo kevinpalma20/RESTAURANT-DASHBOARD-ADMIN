@@ -1,1 +1,3 @@
-export interface SingInResponse {}
+export interface SingInResponse {
+  token: string;
+}
