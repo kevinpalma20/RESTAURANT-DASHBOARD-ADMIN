@@ -10,9 +10,11 @@ import { Graphica1Component } from './dashboard-plane/graphica1/graphica1.compon
 import { DashboardComponent } from './dashboard-plane/notifies/dashboard.component';
 import { AccountSettingsComponent } from './dashboard-plane/account-settings/account-settings.component';
 
-import { UserComponent } from './mantiniences/user/user.component';
-
 import { RoleGuard } from '../guards/role.guard';
+
+import { UserComponent } from './mantiniences/user/user.component';
+import { BoardComponent } from './mantiniences/board/board.component';
+import { EnviromentComponent } from './mantiniences/enviroment/enviroment.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,8 @@ const routes: Routes = [
 
       //Mantiniences
       { path: 'users', canActivate: [RoleGuard], component: UserComponent },
+      { path: 'enviroment', component: EnviromentComponent },
+      { path: 'boards', component: BoardComponent },
     ],
   },
 ];

@@ -23,7 +23,7 @@ export class LoginComponent {
   ) {}
 
   login() {
-    this.request.username = 'KEVINC2F48D';
+    this.request.username = 'KEVIN0998C1';
     this.request.password = 'kevin12345@';
 
     this.authenticationService.singIn(this.request).subscribe(

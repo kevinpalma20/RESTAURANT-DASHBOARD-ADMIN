@@ -12,6 +12,8 @@ import { Graphica1Component } from './dashboard-plane/graphica1/graphica1.compon
 import { PagesComponent } from './pages.component';
 import { AccountSettingsComponent } from './dashboard-plane/account-settings/account-settings.component';
 import { UserComponent } from './mantiniences/user/user.component';
+import { BoardComponent } from './mantiniences/board/board.component';
+import { EnviromentComponent } from './mantiniences/enviroment/enviroment.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { UserComponent } from './mantiniences/user/user.component';
     PagesComponent,
     AccountSettingsComponent,
     UserComponent,
+    BoardComponent,
+    EnviromentComponent,
   ],
   exports: [DashboardComponent, Graphica1Component, PagesComponent],
   imports: [

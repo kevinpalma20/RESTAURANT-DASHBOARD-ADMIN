@@ -8,17 +8,17 @@ export class RetriveCredentialsService {
   constructor() {}
 
   builderCredentials(token: string) {
-    const httpOptions = {
+    const httpOptions: Object = {
       headers: new HttpHeaders({
         Accept: 'application/json',
-        Authorization: 'Bearer ' + token,
+        Authorization: `Bearer ${token}`,
       }),
     };
     return httpOptions;
   }
 
   retriveCredentials() {
-    const token = localStorage.getItem('TOKEN-LINE') || '';
+    const token = localStorage.getItem('token') || '';
     return this.builderCredentials(token);
   }
 }

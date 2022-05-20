@@ -4,7 +4,7 @@ import { Client, IFrame, IMessage } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 
 import { NotifyResponse } from 'src/app/model/NotifyResponse';
-import { SERVICE } from 'src/environments/environment';
+import { SERVICE } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-dashboard',

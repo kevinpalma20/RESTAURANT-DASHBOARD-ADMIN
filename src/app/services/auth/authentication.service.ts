@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import { tap, map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { tap, map, catchError } from 'rxjs/operators';
 
-import { SERVICE } from 'src/environments/environment';
-import { SingInResponse } from '../../model/response/SingInResponse';
-import { SingInRequest } from '../../model/request/SingInRequest';
+import { SERVICE } from 'src/environments/environment.prod';
+
+import { SingInResponse } from 'src/app/model/response/SingInResponse';
+import { SingInRequest } from 'src/app/model/request/SingInRequest';
+import { VerifyResponse } from 'src/app/model/response/VerifyTokenResponse';
+
 import { RetriveCredentialsService } from './retrive-credentials.service';
-import { VerifyResponse } from '../../model/response/VerifyTokenResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -52,7 +54,6 @@ export class AuthenticationService {
 
   logOut(): void {
     localStorage.removeItem('token');
-
     this.router.navigateByUrl('/login');
   }
 }
