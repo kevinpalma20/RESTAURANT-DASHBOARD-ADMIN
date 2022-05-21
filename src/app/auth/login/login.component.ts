@@ -32,7 +32,7 @@ export class LoginComponent {
   }
 
   login() {
-    //this.request.username = 'KEVIN0998C1';
+    //this.request.username = 'KEVIN6EE36D';
     //this.request.password = 'kevin12345@';
     this.authenticationService.singIn(this.request).subscribe(
       (response: SingInResponse) => this.router.navigateByUrl('/'),

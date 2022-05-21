@@ -14,7 +14,7 @@ export class BoardRetriveService {
   constructor(private http: HttpClient) {}
 
   retrive(page: number): Observable<BoardResponseCollection> {
-    const endpoint = this.SERVICE_BOARD.concat(`?page=${page}&size=4`);
+    const endpoint = this.SERVICE_BOARD.concat(`?page=${page}&size=2`);
 
     return this.http.get<BoardResponseCollection>(endpoint);
   }
