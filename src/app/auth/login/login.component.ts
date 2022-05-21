@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
 
-import { SingInRequest } from 'src/app/model/request/SingInRequest';
-import { SingInResponse } from 'src/app/model/response/SingInResponse';
+import { SingInRequest } from 'src/app/model/request/auth/SingInRequest';
+import { SingInResponse } from 'src/app/model/response/auth/SingInResponse';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
-import { ErrorResponse } from 'src/app/model/response/ErrorResponse';
+import { ErrorResponse } from 'src/app/model/response/error/ErrorResponse';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +32,7 @@ export class LoginComponent {
   }
 
   login() {
-    //this.request.username = 'KEVIN6EE36D';
+    //this.request.username = 'KEVIND4B60B';
     //this.request.password = 'kevin12345@';
     this.authenticationService.singIn(this.request).subscribe(
       (response: SingInResponse) => this.router.navigateByUrl('/'),

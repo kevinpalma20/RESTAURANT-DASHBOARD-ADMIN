@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import {
   BoardRequest,
   JoinBoardRequest,
-} from 'src/app/model/request/BoardRequest';
-import { MessageResponse } from 'src/app/model/response/MessageResponse';
+} from 'src/app/model/request/entity/BoardRequest';
+import { MessageResponse } from 'src/app/model/response/messages/MessageResponse';
 import { SERVICE } from 'src/environments/environment.prod';
 import { RetriveCredentialsService } from '../auth/retrive-credentials.service';
 

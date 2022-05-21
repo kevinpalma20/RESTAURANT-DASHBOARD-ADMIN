@@ -1,4 +1,4 @@
-import { BoardResponse } from './BoardResponse';
+import { BoardResponse } from '../entity/BoardResponse';
 import { ResponseCollection } from './ResponseCollection';
 
 export interface BoardResponseCollection extends ResponseCollection {

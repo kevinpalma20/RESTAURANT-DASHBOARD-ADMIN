@@ -2,6 +2,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { NgModule } from '@angular/core';
 
+import { RoleGuard } from '../guards/role.guard';
+
 import { AuthGuard } from '../guards/auth.guard';
 
 import { PagesComponent } from './pages.component';
@@ -9,8 +11,6 @@ import { PagesComponent } from './pages.component';
 import { Graphica1Component } from './dashboard-plane/graphica1/graphica1.component';
 import { DashboardComponent } from './dashboard-plane/notifies/dashboard.component';
 import { AccountSettingsComponent } from './dashboard-plane/account-settings/account-settings.component';
-
-import { RoleGuard } from '../guards/role.guard';
 
 import { UserComponent } from './mantiniences/user/user.component';
 import { BoardComponent } from './mantiniences/board/board.component';

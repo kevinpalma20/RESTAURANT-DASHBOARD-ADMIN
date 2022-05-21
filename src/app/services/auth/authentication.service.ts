@@ -7,9 +7,9 @@ import { tap, map, catchError } from 'rxjs/operators';
 
 import { SERVICE } from 'src/environments/environment.prod';
 
-import { SingInResponse } from 'src/app/model/response/SingInResponse';
-import { SingInRequest } from 'src/app/model/request/SingInRequest';
-import { VerifyResponse } from 'src/app/model/response/VerifyTokenResponse';
+import { SingInResponse } from 'src/app/model/response/auth/SingInResponse';
+import { SingInRequest } from 'src/app/model/request/auth/SingInRequest';
+import { VerifyResponse } from 'src/app/model/response/auth/VerifyTokenResponse';
 
 import { RetriveCredentialsService } from './retrive-credentials.service';
 

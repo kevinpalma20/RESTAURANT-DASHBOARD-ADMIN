@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Client, IFrame, IMessage } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 
-import { NotifyResponse } from 'src/app/model/NotifyResponse';
+import { NotifyResponse } from 'src/app/model/response/messages/NotifyResponse';
 import { SERVICE } from 'src/environments/environment.prod';
 
 @Component({

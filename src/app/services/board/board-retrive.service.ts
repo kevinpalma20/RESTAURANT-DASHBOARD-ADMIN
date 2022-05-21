@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BoardResponseCollection } from 'src/app/model/response/BoardResponseCollection';
+import { BoardResponseCollection } from 'src/app/model/response/retrive/BoardResponseCollection';
 import { SERVICE } from 'src/environments/environment.prod';
 
 @Injectable({

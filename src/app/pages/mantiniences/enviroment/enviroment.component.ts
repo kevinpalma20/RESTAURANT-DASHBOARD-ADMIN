@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ErrorResponse } from 'src/app/model/response/ErrorResponse';
+import { ErrorResponse } from 'src/app/model/response/error/ErrorResponse';
 import { EnviromentService } from 'src/app/services/enviroment.service';
-import { MessageResponse } from 'src/app/model/response/MessageResponse';
-import { EnviromentResponseCollection } from 'src/app/model/response/EnviromentResponseCollection';
+import { MessageResponse } from 'src/app/model/response/messages/MessageResponse';
+import { EnviromentResponseCollection } from 'src/app/model/response/retrive/EnviromentResponseCollection';
 
 import Swal from 'sweetalert2';
 

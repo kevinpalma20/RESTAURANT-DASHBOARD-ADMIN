@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Details } from 'src/app/model/response/BoardResponse';
-import { BoardResponseCollection } from 'src/app/model/response/BoardResponseCollection';
-import { EnviromentResponse } from 'src/app/model/response/EnviromentResponse';
-import { EnviromentResponseCollection } from 'src/app/model/response/EnviromentResponseCollection';
-import { ErrorResponse } from 'src/app/model/response/ErrorResponse';
-import { MessageResponse } from 'src/app/model/response/MessageResponse';
+import { Details } from 'src/app/model/response/entity/BoardResponse';
+import { BoardResponseCollection } from 'src/app/model/response/retrive/BoardResponseCollection';
+import { EnviromentResponse } from 'src/app/model/response/entity/EnviromentResponse';
+import { EnviromentResponseCollection } from 'src/app/model/response/retrive/EnviromentResponseCollection';
+import { ErrorResponse } from 'src/app/model/response/error/ErrorResponse';
+import { MessageResponse } from 'src/app/model/response/messages/MessageResponse';
 import { BoardRetriveService } from 'src/app/services/board/board-retrive.service';
 import { BoardService } from 'src/app/services/board/board.service';
 import { EnviromentService } from 'src/app/services/enviroment.service';
@@ -12,7 +12,7 @@ import { EnviromentService } from 'src/app/services/enviroment.service';
 import {
   BoardRequest,
   JoinBoardRequest,
-} from 'src/app/model/request/BoardRequest';
+} from 'src/app/model/request/entity/BoardRequest';
 import Swal from 'sweetalert2';
 
 @Component({
