@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-enviroment',
   templateUrl: './enviroment.component.html',
-  styleUrls: ['./enviroment.component.css'],
 })
 export class EnviromentComponent implements OnInit {
   public loading: boolean = true;

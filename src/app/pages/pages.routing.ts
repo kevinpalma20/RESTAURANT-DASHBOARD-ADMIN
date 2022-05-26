@@ -15,6 +15,8 @@ import { AccountSettingsComponent } from './dashboard-plane/account-settings/acc
 import { UserComponent } from './mantiniences/user/user.component';
 import { BoardComponent } from './mantiniences/board/board.component';
 import { EnviromentComponent } from './mantiniences/enviroment/enviroment.component';
+import { CartComponent } from './mantiniences/cart/cart.component';
+import { DeliveryUnitComponent } from './mantiniences/delivery-unit/delivery-unit.component';
 
 const routes: Routes = [
   {
@@ -32,8 +34,11 @@ const routes: Routes = [
 
       //Mantiniences
       { path: 'users', canActivate: [RoleGuard], component: UserComponent },
+
       { path: 'enviroment', component: EnviromentComponent },
       { path: 'boards', component: BoardComponent },
+      { path: 'delivery-unit', component: DeliveryUnitComponent },
+      { path: 'cart/:name', component: CartComponent },
     ],
   },
 ];

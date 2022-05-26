@@ -14,6 +14,8 @@ import { AccountSettingsComponent } from './dashboard-plane/account-settings/acc
 import { UserComponent } from './mantiniences/user/user.component';
 import { BoardComponent } from './mantiniences/board/board.component';
 import { EnviromentComponent } from './mantiniences/enviroment/enviroment.component';
+import { CartComponent } from './mantiniences/cart/cart.component';
+import { DeliveryUnitComponent } from './mantiniences/delivery-unit/delivery-unit.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { EnviromentComponent } from './mantiniences/enviroment/enviroment.compon
     UserComponent,
     BoardComponent,
     EnviromentComponent,
+    CartComponent,
+    DeliveryUnitComponent,
   ],
   exports: [DashboardComponent, Graphica1Component, PagesComponent],
   imports: [

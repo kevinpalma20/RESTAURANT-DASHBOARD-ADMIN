@@ -1,0 +1,32 @@
+<div class="row animated fadeIn fast" *ngIf="loading">
+  <div class="col-12">
+    <div class="alert alert-info text-center" role="alert">
+      <h4 class="alert-heading">Cargando</h4>
+      <i class="fa fa-spin fa-refresh fa-2x"></i>
+      <p class="mb-0">Espere</p>
+    </div>
+  </div>
+</div>
+<span>Cuentas de la mesa</span>
+<div *ngFor="let item of collection">
+  <div class="alert alert-warning" role="alert">
+    Fecha
+    {{ item.dateCreated }}
+    <strong>Total {{ item.total }}</strong>
+    <button
+      type="button"
+      class="close"
+      aria-expanded="false"
+      data-toggle="collapse"
+      [attr.data-target]="'#' + item.idCart"
+    >
+      <span aria-hidden="true">Ver productos</span>
+    </button>
+  </div>
+  <div class="collapse" id="{{ item.idCart }}">
+    <div class="card card-body" *ngFor="let items of item.collection">
+      {{ items.product.names[0] }} Cantidad: {{ items.quantity }}
+      <strong>Importe: {{ items.importt }}</strong>
+    </div>
+  </div>
+</div>

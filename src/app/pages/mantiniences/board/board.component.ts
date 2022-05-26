@@ -18,11 +18,10 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css'],
 })
 export class BoardComponent implements OnInit {
   public loading: boolean = true;
-  public responseForRetrive: BoardResponseCollection = {};
+  public responseForRetrive: BoardResponseCollection = { collections: [] };
 
   public to: number = 0;
   public pagesTotal: number = 0;
@@ -64,7 +63,6 @@ export class BoardComponent implements OnInit {
       (response: BoardResponseCollection) => {
         this.responseForRetrive = response;
         this.pagesTotal = this.responseForRetrive.totalPages || 0;
-
         this.loading = false;
       },
       (error: ErrorResponse) => this.showAlertError(error)
