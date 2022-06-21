@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ErrorResponse } from 'src/app/model/response/error/ErrorResponse';
 import { EnviromentService } from 'src/app/services/enviroment.service';
+import { ErrorResponse } from 'src/app/model/response/error/ErrorResponse';
 import { MessageResponse } from 'src/app/model/response/messages/MessageResponse';
 import { EnviromentResponseCollection } from 'src/app/model/response/retrive/EnviromentResponseCollection';
 
@@ -13,7 +13,11 @@ import Swal from 'sweetalert2';
 })
 export class EnviromentComponent implements OnInit {
   public loading: boolean = true;
-  public responseForRetrive: EnviromentResponseCollection = {};
+  public responseForRetrive: EnviromentResponseCollection = {
+    collections: [],
+    totalItems: 0,
+    totalPages: 0,
+  };
 
   public to: number = 0;
   public pagesTotal: number = 0;

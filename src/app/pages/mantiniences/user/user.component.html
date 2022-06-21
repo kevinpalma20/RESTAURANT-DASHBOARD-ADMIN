@@ -1,1 +1,68 @@
-<p>user works!</p>
+<app-modal-user></app-modal-user>
+<app-loading [loading]="loading"></app-loading>
+
+<div class="row animated fadeIn fast" *ngIf="!loading">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <h4 class="card-title">Usuarios</h4>
+            <h5 class="card-subtitle">Total</h5>
+          </div>
+          <div class="col-md-5">
+            <app-modal-button-invoque
+              target="User"
+              title="Registrar nuevo usuario"
+            ></app-modal-button-invoque>
+
+            <button
+              class="btn btn-light text-themecolor btn-block"
+              (click)="this.retrive(0)"
+            >
+              <i class="fa fa-eye mr-2"></i>
+              Actualizar
+            </button>
+          </div>
+        </div>
+        <hr />
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Nombre de usuario</th>
+                <th>Correo</th>
+                <th>Fecha de admición</th>
+                <th>Rol</th>
+                <th>Especialidad</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of array">
+                <td>{{ item.firstname }}</td>
+                <td>{{ item.lastname }}</td>
+                <td>{{ item.username }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.created }}</td>
+                <td>{{ item.role }}</td>
+                <td>{{ item.specialty }}</td>
+                <td>{{ item.state }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-secondary" (click)="changuePage(true)">
+          Anterior
+        </button>
+        &nbsp;
+        <button class="btn btn-secondary" (click)="changuePage(false)">
+          Siguiente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

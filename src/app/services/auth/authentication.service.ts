@@ -29,7 +29,7 @@ export class AuthenticationService {
   ) {}
 
   singIn(singInRequest: SingInRequest): Observable<SingInResponse> {
-    let endpoint = this.SERVICE_AUTH + '/singIn';
+    let endpoint = this.SERVICE_AUTH + '/ForAdmin';
     return this.http
       .post<SingInResponse>(endpoint, singInRequest)
       .pipe(

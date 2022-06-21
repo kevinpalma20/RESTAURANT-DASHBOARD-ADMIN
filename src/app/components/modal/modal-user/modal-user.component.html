@@ -1,0 +1,106 @@
+<div class="modal fade" id="modalUser" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <app-model-header title="Registrar usuarios"></app-model-header>
+      <div class="modal-body">
+        <form
+          id="userForm"
+          (ngSubmit)="save()"
+          class="form-horizontal form-material"
+        >
+          <div class="row form-group">
+            <div class="col-3">
+              <label for="recipient-dni" class="control-label">Dni:</label>
+              <input
+                name="dni"
+                type="number"
+                id="recipient-dni"
+                class="form-control"
+                [(ngModel)]="request.dni"
+              />
+            </div>
+
+            <div class="col-9">
+              <label for="recipient-name" class="control-label">
+                Nombres:
+              </label>
+              <input
+                name="name"
+                type="text"
+                class="form-control"
+                id="recipient-name"
+                [(ngModel)]="request.firstname"
+              />
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-6">
+              <label for="recipient-lastname" class="control-label">
+                Apellidos:
+              </label>
+              <input
+                name="lastname"
+                id="recipient-lastname"
+                class="form-control"
+                [(ngModel)]="request.lastname"
+              />
+            </div>
+
+            <div class="col-6">
+              <label for="recipient-email" class="control-label">
+                Correo electronico:
+              </label>
+              <input
+                name="email"
+                type="email"
+                class="form-control"
+                id="recipient-email"
+                [(ngModel)]="request.email"
+              />
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-6">
+              <label for="recipient-role" class="control-label"> Rol: </label>
+              <select
+                name="role"
+                id="recipient-role"
+                [(ngModel)]="request.role"
+                class="form-control form-control-sm"
+              >
+                <option [value]="0" selected value disabled>
+                  Seleccione un rol
+                </option>
+                <option [value]="item.id" *ngFor="let item of array_role">
+                  {{ item.name }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-6">
+              <label for="recipient-speciality" class="control-label">
+                Especialidad:
+              </label>
+              <select
+                name="speciality"
+                id="recipient-speciality"
+                [(ngModel)]="request.specialty"
+                class="form-control form-control-sm"
+              >
+                <option [value]="0" selected value disabled>
+                  Seleccione una especialidad
+                </option>
+                <option [value]="item.id" *ngFor="let item of array_speciality">
+                  {{ item.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"></div>
+          <app-modal-buttons></app-modal-buttons>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

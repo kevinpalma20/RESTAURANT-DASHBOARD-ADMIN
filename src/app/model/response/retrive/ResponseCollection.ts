@@ -1,4 +1,4 @@
 export interface ResponseCollection {
-  totalItems?: number;
-  totalPages?: number;
+  totalItems: number;
+  totalPages: number;
 }

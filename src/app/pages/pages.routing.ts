@@ -2,8 +2,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { NgModule } from '@angular/core';
 
-import { RoleGuard } from '../guards/role.guard';
-
 import { AuthGuard } from '../guards/auth.guard';
 
 import { PagesComponent } from './pages.component';
@@ -27,13 +25,12 @@ const routes: Routes = [
       { path: '', component: DashboardComponent },
       {
         path: 'graphical',
-        canActivate: [RoleGuard],
         component: Graphica1Component,
       },
       { path: 'settings', component: AccountSettingsComponent },
 
       //Mantiniences
-      { path: 'users', canActivate: [RoleGuard], component: UserComponent },
+      { path: 'users', component: UserComponent },
 
       { path: 'enviroment', component: EnviromentComponent },
       { path: 'boards', component: BoardComponent },

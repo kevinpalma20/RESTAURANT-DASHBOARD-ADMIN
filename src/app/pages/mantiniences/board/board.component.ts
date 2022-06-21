@@ -1,19 +1,20 @@
+import Swal from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
+
+import { BoardService } from 'src/app/services/board/board.service';
 import { Details } from 'src/app/model/response/entity/BoardResponse';
-import { BoardResponseCollection } from 'src/app/model/response/retrive/BoardResponseCollection';
-import { EnviromentResponse } from 'src/app/model/response/entity/EnviromentResponse';
-import { EnviromentResponseCollection } from 'src/app/model/response/retrive/EnviromentResponseCollection';
-import { ErrorResponse } from 'src/app/model/response/error/ErrorResponse';
+import { ShowAlertService } from 'src/app/services/show-alert.service';
+import { EnviromentService } from 'src/app/services/enviroment.service';
 import { MessageResponse } from 'src/app/model/response/messages/MessageResponse';
 import { BoardRetriveService } from 'src/app/services/board/board-retrive.service';
-import { BoardService } from 'src/app/services/board/board.service';
-import { EnviromentService } from 'src/app/services/enviroment.service';
+import { EnviromentResponse } from 'src/app/model/response/entity/EnviromentResponse';
+import { BoardResponseCollection } from 'src/app/model/response/retrive/BoardResponseCollection';
+import { EnviromentResponseCollection } from 'src/app/model/response/retrive/EnviromentResponseCollection';
 
 import {
   BoardRequest,
   JoinBoardRequest,
 } from 'src/app/model/request/entity/BoardRequest';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-board',
@@ -21,7 +22,11 @@ import Swal from 'sweetalert2';
 })
 export class BoardComponent implements OnInit {
   public loading: boolean = true;
-  public responseForRetrive: BoardResponseCollection = { collections: [] };
+  public responseForRetrive: BoardResponseCollection = {
+    totalPages: 0,
+    totalItems: 0,
+    collections: [],
+  };
 
   public to: number = 0;
   public pagesTotal: number = 0;
@@ -33,6 +38,7 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private boardService: BoardService,
+    private showAlertService: ShowAlertService,
     private enviromentService: EnviromentService,
     private boardRetriveService: BoardRetriveService
   ) {}
@@ -42,22 +48,6 @@ export class BoardComponent implements OnInit {
     this.retriveEnviroment();
   }
 
-  private showAlertError(error: ErrorResponse) {
-    Swal.fire({
-      title: error.error?.message,
-      text: error.error?.error,
-      icon: 'error',
-    });
-  }
-
-  private showAlertSuccess(message: MessageResponse) {
-    Swal.fire({
-      text: message.message,
-      icon: 'success',
-    });
-    this.retrive(0);
-  }
-
   private retrive(page: number): void {
     this.boardRetriveService.retrive(page).subscribe(
       (response: BoardResponseCollection) => {
@@ -65,7 +55,7 @@ export class BoardComponent implements OnInit {
         this.pagesTotal = this.responseForRetrive.totalPages || 0;
         this.loading = false;
       },
-      (error: ErrorResponse) => this.showAlertError(error)
+      (error: any) => this.showAlertService.showMessageError(error)
     );
   }
 
@@ -73,22 +63,24 @@ export class BoardComponent implements OnInit {
     this.enviromentService.retriveAll().subscribe(
       (response: EnviromentResponseCollection) =>
         (this.enviromentCollection = response.collections || []),
-      (error: ErrorResponse) => this.showAlertError(error)
+      (error: any) => this.showAlertService.showMessageError(error)
     );
   }
 
   public JoinBoard() {
     console.log(this.joinBoardRequest);
     this.boardService.join(this.joinBoardRequest).subscribe(
-      (response: MessageResponse) => this.showAlertSuccess(response),
-      (error: ErrorResponse) => this.showAlertError(error)
+      (response: MessageResponse) =>
+        this.showAlertService.showMessageSuccess(response.message),
+      (error: any) => this.showAlertService.showMessageError(error)
     );
   }
 
   public save(): void {
     this.boardService.save(this.boardRequest).subscribe(
-      (response: MessageResponse) => this.showAlertSuccess(response),
-      (error: ErrorResponse) => this.showAlertError(error)
+      (response: MessageResponse) =>
+        this.showAlertService.showMessageSuccess(response.message),
+      (error: any) => this.showAlertService.showMessageError(error)
     );
   }
 
